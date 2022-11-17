@@ -1,0 +1,30 @@
+{
+  "name": "imgui",
+  "version": "1.0.1",
+  "description": "Immediate GUI inspired by Dear IMGUI",
+  "main": "dist/main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "webpack --mode development",
+    "watch": "webpack --watch --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/the_bunyip/imgui.git"
+  },
+  "keywords": [
+    "gui"
+  ],
+  "author": "benito.m@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/the_bunyip/imgui/issues"
+  },
+  "homepage": "https://bitbucket.org/the_bunyip/imgui#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
