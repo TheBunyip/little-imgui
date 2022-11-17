@@ -1,29 +1,31 @@
 {
   "name": "little-imgui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Immediate GUI inspired by Dear IMGUI",
   "main": "dist/main.js",
   "directories": {
     "test": "test"
   },
-  "author": "Ben Miller",
   "scripts": {
     "build": "webpack --mode development",
     "watch": "webpack --watch --mode development"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/the_bunyip/imgui.git"
+    "url": "git@github.com:TheBunyip/little-imgui.git"
   },
   "keywords": [
-    "gui"
+    "gui",
+    "imgui",
+    "ui",
+    "canvas"
   ],
   "author": "benito.m@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://bitbucket.org/the_bunyip/imgui/issues"
+    "url": "https://github.com/TheBunyip/little-imgui/issues"
   },
-  "homepage": "https://bitbucket.org/the_bunyip/imgui#readme",
+  "homepage": "https://github.com/TheBunyip/little-imgui/tree/master#readme",
   "devDependencies": {
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
