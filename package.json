@@ -1,11 +1,12 @@
 {
-  "name": "imgui",
+  "name": "little-imgui",
   "version": "1.0.1",
   "description": "Immediate GUI inspired by Dear IMGUI",
   "main": "dist/main.js",
   "directories": {
     "test": "test"
   },
+  "author": "Ben Miller",
   "scripts": {
     "build": "webpack --mode development",
     "watch": "webpack --watch --mode development"
