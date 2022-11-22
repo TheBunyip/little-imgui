@@ -9,6 +9,7 @@ export function create(canvas, params) {
     activeBgColour: params.activeBgColour || "red",
     activeFgColour: params.activeFgColour || "white",
     margin: Number.isInteger(params.margin) ? params.margin : 2,
+    padding: Number.isInteger(params.padding) ? params.padding : 2,
     x: 0,
     y: 0,
     hotID: null, // about to interact with this UI item
@@ -23,11 +24,21 @@ export function start(ui, x, y, mouseX, mouseY, mouseUp, mouseDown) {
   ui.mouseY = mouseY;
   ui.mouseUp = mouseUp;
   ui.mouseDown = mouseDown;
-
-  // ui.ctx.fillStyle = ui.bgColour;
-  // ui.ctx.fillRect(0, 0, ui.ctx.canvas.width, ui.ctx.canvas.height);
+  ui.maxWidth = 0;
 }
 
-export function end(ui) {
+export function end(ui, scaleToFit) {
   delete ui.hotID;
+
+  ui.maxWidth = Math.ceil(ui.maxWidth);
+
+  if(scaleToFit) {
+    if(ui.ctx.canvas.height !== ui.y) {
+      ui.ctx.canvas.height = ui.y;
+    }
+    if(ui.ctx.canvas.width !== ui.maxWidth) {
+      ui.ctx.canvas.width = ui.maxWidth;
+    }
+  }
+
 }

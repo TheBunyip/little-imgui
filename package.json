@@ -2,13 +2,12 @@
   "name": "little-imgui",
   "version": "1.0.2",
   "description": "Immediate GUI inspired by Dear IMGUI",
-  "main": "dist/main.js",
+  "main": "src/index.js",
   "directories": {
-    "test": "test"
+    "src": "src"
   },
   "scripts": {
-    "build": "webpack --mode development",
-    "watch": "webpack --watch --mode development"
+    "test": "http-server . -c-1 -o test/test.html"
   },
   "repository": {
     "type": "git",
@@ -27,7 +26,6 @@
   },
   "homepage": "https://github.com/TheBunyip/little-imgui/tree/master#readme",
   "devDependencies": {
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "http-server": "^14.1.1"
   }
 }

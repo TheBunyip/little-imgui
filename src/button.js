@@ -1,12 +1,13 @@
-import * as util from "./util";
+import * as util from "./util.js";
 
-export default function button(ui, id, text, width, height) {
+export default function button(ui, id, text, width, height, params={}) {
   let result = false;
+  let left = ui.x + ui.margin;
+  let top = ui.y + ui.margin;
 
-  const left = ui.x + ui.margin;
-  const top = ui.y + ui.margin;
+  const padding = params.padding || ui.padding;
 
-  if (util.inside(ui.mouseX, ui.mouseY, left, top, width, height)) {
+  if (util.inside(ui.mouseX, ui.mouseY, left, top, width + padding, height + padding)) {
     ui.hotID = id;
   }
 
@@ -32,15 +33,28 @@ export default function button(ui, id, text, width, height) {
     ui.ctx.strokeStyle = ui.fgColour;
   }
 
-  ui.ctx.fillRect(left, top, width, height);
-  ui.ctx.strokeRect(left, top, width, height);
-
-  ui.ctx.textAlign = "center";
+  ui.ctx.fillRect(left, top, width + padding * 2, height + padding * 2);
+  ui.ctx.strokeRect(left, top, width + padding * 2, height + padding * 2);
+  
+  ui.ctx.font = params.font || "14px monospace";
+  ui.ctx.textAlign = params.alignment || "center";
   ui.ctx.textBaseline = "middle";
   ui.ctx.fillStyle = ui.ctx.strokeStyle;
-  ui.ctx.fillText(text, left + width / 2, top + height / 2, width - 2);
+  
+  // adjust dimensions for padding
+  width = params.scaleToFit ? ui.ctx.measureText(text).width : width;
 
-  ui.y = top + height + ui.margin;
+  if(ui.ctx.textAlign === "left") {
+    ui.ctx.fillText(text, left + padding, top + padding + height / 2, params.scaleToFit ? width : undefined);
+  } else if (ui.ctx.textAlign === "right") {
+    ui.ctx.fillText(text, left + width, top + padding + height / 2);
+  } else {
+    ui.ctx.fillText(text, left + width / 2, top + padding + height / 2);
+  }
+
+  ui.y = top + padding + height + padding + ui.margin;
+  
+  ui.maxWidth = Math.max(ui.maxWidth, left + padding + width + padding + ui.margin);
 
   return result;
 }
