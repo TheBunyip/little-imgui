@@ -3,11 +3,11 @@ import * as util from "./util.js";
 export default function button(ui, id, text, width, height, params={}) {
   let result = false;
   let left = ui.x + ui.margin;
-  let top = ui.y + ui.margin;
+  let top = ui.y;
 
   const padding = params.padding || ui.padding;
 
-  if (util.inside(ui.mouseX, ui.mouseY, left, top, width + padding, height + padding)) {
+  if (util.inside(ui.mouseX, ui.mouseY, left, top, width + padding * 2, height + padding * 2)) {
     ui.hotID = id;
   }
 
@@ -40,21 +40,19 @@ export default function button(ui, id, text, width, height, params={}) {
   ui.ctx.textAlign = params.alignment || "center";
   ui.ctx.textBaseline = "middle";
   ui.ctx.fillStyle = ui.ctx.strokeStyle;
-  
-  // adjust dimensions for padding
-  width = params.scaleToFit ? ui.ctx.measureText(text).width : width;
 
+  const fillWidth = params.overlap ? undefined : width;
+  const textTop = top + padding + height / 2;
   if(ui.ctx.textAlign === "left") {
-    ui.ctx.fillText(text, left + padding, top + padding + height / 2, params.scaleToFit ? width : undefined);
+    ui.ctx.fillText(text, left + padding, textTop, fillWidth);
   } else if (ui.ctx.textAlign === "right") {
-    ui.ctx.fillText(text, left + width, top + padding + height / 2);
+    ui.ctx.fillText(text, left + padding + width, textTop, fillWidth);
   } else {
-    ui.ctx.fillText(text, left + width / 2, top + padding + height / 2);
+    //ui.ctx.fillText(text, left + padding + width / 2, top + padding + height / 2);
+    ui.ctx.fillText(text, left + padding + width / 2, textTop, fillWidth);
   }
 
   ui.y = top + padding + height + padding + ui.margin;
-  
-  ui.maxWidth = Math.max(ui.maxWidth, left + padding + width + padding + ui.margin);
 
   return result;
 }

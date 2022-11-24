@@ -18,27 +18,19 @@ export function create(canvas, params) {
 }
 
 export function start(ui, x, y, mouseX, mouseY, mouseUp, mouseDown) {
-  ui.x = x + 1;
-  ui.y = y;
+  ui.x = x;
+  ui.y = y + ui.margin;
   ui.mouseX = mouseX;
   ui.mouseY = mouseY;
   ui.mouseUp = mouseUp;
   ui.mouseDown = mouseDown;
-  ui.maxWidth = 0;
 }
 
-export function end(ui, scaleToFit) {
+export function end(ui, autoFitToHeight) {
   delete ui.hotID;
 
-  ui.maxWidth = Math.ceil(ui.maxWidth);
 
-  if(scaleToFit) {
-    if(ui.ctx.canvas.height !== ui.y) {
-      ui.ctx.canvas.height = ui.y;
-    }
-    if(ui.ctx.canvas.width !== ui.maxWidth) {
-      ui.ctx.canvas.width = ui.maxWidth;
-    }
+  if(autoFitToHeight && ui.ctx.canvas.height !== ui.y) {
+    ui.ctx.canvas.height = ui.y;
   }
-
 }

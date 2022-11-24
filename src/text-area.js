@@ -1,6 +1,6 @@
 export default function textArea(ui, text, width, height, params={}) {
   const left = ui.x + ui.margin;
-  const top = ui.y + ui.margin;
+  const top = ui.y;
 
   ui.ctx.fillStyle = ui.bgColour;
 
@@ -22,6 +22,4 @@ export default function textArea(ui, text, width, height, params={}) {
   ui.ctx.fillText(text, left + padding, top + padding);
 
   ui.y = top + padding + height + padding + ui.margin;
-
-  ui.maxWidth = Math.max(ui.maxWidth, left + padding + width + padding + ui.margin);
 }

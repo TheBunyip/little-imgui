@@ -83,13 +83,3 @@ function registerInputHandlers(ui) {
     ui.mouseUp = false;
   });
 }
-
-document.addEventListener("keydown", (evt) => {
-  if(evt.key === " ") {
-    // uis.forEach((ui) => {
-    //   console.log(`Rendering canvas with width ${ui.maxWidth}`);
-    //   render(ui);
-      
-    // });
-  }
-});
