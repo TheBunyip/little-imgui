@@ -2,12 +2,13 @@ import * as util from "./util.js";
 
 export default function button(ui, id, text, width, height, params={}) {
   let result = false;
-  let left = ui.x + ui.margin;
+  let left = ui.x + ui.marginH;
   let top = ui.y;
 
-  const padding = params.padding || ui.padding;
+  const paddingV = params.paddingV || ui.paddingV;
+  const paddingH = params.paddingH || ui.paddingH;
 
-  if (util.inside(ui.mouseX, ui.mouseY, left, top, width + padding * 2, height + padding * 2)) {
+  if (util.inside(ui.mouseX, ui.mouseY, left, top, width + paddingH * 2, height + paddingV * 2)) {
     ui.hotID = id;
   }
 
@@ -33,8 +34,8 @@ export default function button(ui, id, text, width, height, params={}) {
     ui.ctx.strokeStyle = ui.fgColour;
   }
 
-  ui.ctx.fillRect(left, top, width + padding * 2, height + padding * 2);
-  ui.ctx.strokeRect(left, top, width + padding * 2, height + padding * 2);
+  ui.ctx.fillRect(left, top, width + paddingH * 2, height + paddingV * 2);
+  ui.ctx.strokeRect(left, top, width + paddingH * 2, height + paddingV * 2);
   
   ui.ctx.font = params.font || "14px monospace";
   ui.ctx.textAlign = params.alignment || "center";
@@ -42,17 +43,16 @@ export default function button(ui, id, text, width, height, params={}) {
   ui.ctx.fillStyle = ui.ctx.strokeStyle;
 
   const fillWidth = params.overlap ? undefined : width;
-  const textTop = top + padding + height / 2;
+  const textTop = top + paddingV + height / 2;
   if(ui.ctx.textAlign === "left") {
-    ui.ctx.fillText(text, left + padding, textTop, fillWidth);
+    ui.ctx.fillText(text, left + paddingH, textTop, fillWidth);
   } else if (ui.ctx.textAlign === "right") {
-    ui.ctx.fillText(text, left + padding + width, textTop, fillWidth);
+    ui.ctx.fillText(text, left + paddingH + width, textTop, fillWidth);
   } else {
-    //ui.ctx.fillText(text, left + padding + width / 2, top + padding + height / 2);
-    ui.ctx.fillText(text, left + padding + width / 2, textTop, fillWidth);
+    ui.ctx.fillText(text, left + paddingH + width / 2, textTop, fillWidth);
   }
 
-  ui.y = top + padding + height + padding + ui.margin;
+  ui.y = top + paddingV + height + paddingV + ui.marginV;
 
   return result;
 }

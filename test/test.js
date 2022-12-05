@@ -18,7 +18,7 @@ function render(ui) {
     console.log("Button 1");
   }
   
-  if (button(ui, 1, "...with padding", 250, 30, { alignment: "left", padding: 10 })) {
+  if (button(ui, 1, "...with padding", 250, 30, { alignment: "left", paddingV: 10, paddingH: 10 })) {
     console.log("Button 2");
   }
 
@@ -26,7 +26,7 @@ function render(ui) {
     console.log("Button 3");
   }
   
-  if (button(ui, 3, "...with padding", 250, 30, { alignment: "center", padding: 10 })) {
+  if (button(ui, 3, "...with padding", 250, 30, { alignment: "center", paddingH: 10 })) {
     console.log("Button 4");
   }
 
@@ -34,7 +34,7 @@ function render(ui) {
     console.log("Button 5");
   }
   
-  if (button(ui, 5, "...with padding", 250, 30, { alignment: "right", padding: 10 })) {
+  if (button(ui, 5, "...with padding", 250, 30, { alignment: "right", paddingH: 10 })) {
     console.log("Button 6");
   }
 

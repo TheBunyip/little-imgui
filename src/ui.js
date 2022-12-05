@@ -8,8 +8,10 @@ export function create(canvas, params) {
     hotFgColour: params.hotFgColour || "white",
     activeBgColour: params.activeBgColour || "red",
     activeFgColour: params.activeFgColour || "white",
-    margin: Number.isInteger(params.margin) ? params.margin : 2,
-    padding: Number.isInteger(params.padding) ? params.padding : 2,
+    marginV: Number.isInteger(params.marginV) ? params.marginV : 2,
+    marginH: Number.isInteger(params.marginH) ? params.marginH : 2,
+    paddingV: Number.isInteger(params.paddingV) ? params.paddingV : 2,
+    paddingH: Number.isInteger(params.paddingH) ? params.paddingH : 2,
     x: 0,
     y: 0,
     hotID: null, // about to interact with this UI item
@@ -19,7 +21,7 @@ export function create(canvas, params) {
 
 export function start(ui, x, y, mouseX, mouseY, mouseUp, mouseDown) {
   ui.x = x;
-  ui.y = y + ui.margin;
+  ui.y = y + ui.marginV;
   ui.mouseX = mouseX;
   ui.mouseY = mouseY;
   ui.mouseUp = mouseUp;
