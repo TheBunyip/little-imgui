@@ -5,7 +5,7 @@ export default function button(ui, id, text, width, height, overrides = {}) {
 
   let result = false;
   let left = ui.x + p.marginH;
-  let top = ui.y;
+  let top = ui.y + p.marginV;
 
   if (
     util.inside(
@@ -45,9 +45,9 @@ export default function button(ui, id, text, width, height, overrides = {}) {
   ui.ctx.fillRect(left, top, width + p.paddingH * 2, height + p.paddingV * 2);
   ui.ctx.strokeRect(left, top, width + p.paddingH * 2, height + p.paddingV * 2);
 
-  ui.ctx.font = p.font || "14px monospace";
-  ui.ctx.textAlign = p.alignment || "center";
-  ui.ctx.textBaseline = "middle";
+  ui.ctx.font = p.font;
+  ui.ctx.textAlign = p.textAlign;
+  ui.ctx.textBaseline = p.textBaseline;
   ui.ctx.fillStyle = ui.ctx.strokeStyle;
 
   const fillWidth = p.overlap ? undefined : width;
