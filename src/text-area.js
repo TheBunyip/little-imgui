@@ -1,26 +1,25 @@
-export default function textArea(ui, text, width, height, params={}) {
-  const left = ui.x + ui.marginH;
+export default function textArea(ui, text, width, height, overrides = {}) {
+  const p = Object.assign({}, ui, overrides);
+
+  const left = ui.x + p.marginH;
   const top = ui.y;
 
-  ui.ctx.fillStyle = ui.bgColour;
+  ui.ctx.fillStyle = p.bgColour;
 
-  const paddingV = params.paddingV || ui.paddingV;
-  const paddingH = params.paddingH || ui.paddingH;
-
-  if(params.scaleToFit) {
+  if (p.scaleToFit) {
     const measurement = ui.ctx.measureText(text);
     width = measurement.width;
     //height = measurement.height;
   }
-  
-  ui.ctx.fillRect(left, top, width + paddingH * 2, height + paddingV * 2);
 
-  ui.ctx.font = params.font || "14px monospace";
-  ui.ctx.textAlign = params.textAlign || "left";
+  ui.ctx.fillRect(left, top, width + p.paddingH * 2, height + p.paddingV * 2);
+
+  ui.ctx.font = p.font || "14px monospace";
+  ui.ctx.textAlign = p.textAlign || "left";
   ui.ctx.textBaseline = "top";
-  ui.ctx.fillStyle = ui.fgColour;
+  ui.ctx.fillStyle = p.fgColour;
 
-  ui.ctx.fillText(text, left + paddingH, top + paddingV);
+  ui.ctx.fillText(text, left + p.paddingH, top + p.paddingV);
 
-  ui.y = top + paddingV + height + paddingV + ui.marginV;
+  ui.y = top + p.paddingV + height + p.paddingV + p.marginV;
 }

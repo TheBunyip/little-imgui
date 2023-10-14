@@ -1,6 +1,6 @@
 {
   "name": "little-imgui",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Immediate GUI inspired by Dear IMGUI",
   "main": "src/index.js",
   "directories": {
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/TheBunyip/little-imgui/tree/master#readme",
   "devDependencies": {
+    "eslint": "^8.51.0",
     "http-server": "^14.1.1"
   }
 }
